@@ -1,13 +1,14 @@
 import './index.css'
+// import SideBar from './components/SideBar'
+// import MainSection from './components/MainSection'
+// import NewsSection from './components/NewsSection';
+// import ChartSection from './components/ChartSection';
+import Login from './components/Login';
 
 function App() {
   return (
-    <>
-    <h1 className="text-3xl font-bold underline">
-      Hello world!
-    </h1>
-    </>
-  )
+    <Login  />
+  );
 }
 
 export default App
