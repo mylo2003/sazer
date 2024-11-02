@@ -1,63 +1,28 @@
-import { useState } from 'react';
-import SideBar from './SideBar';
-import MainSection from './MainSection';
-import NewsSection from './NewsSection';
-import ChartSection from './ChartSection';
+import { useContext } from 'react';
+import { SazerContext } from '../context/AppContext';
+import Analizer from './Analizer';
+import SazerMenu from './SazerMenu';
 
-export default function Login () {
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [error, setError] = useState('');
+export default function Login() {
 
-  const handleLogin = (e) => {
-    e.preventDefault();
-    if (username === 'camilo' && password === 'camilo') {
-      setIsLoggedIn(true);
-      setError('');
-    } else {
-      setError('Wrong Credentials');
-    }
-  };
-
-  const [isReady, setIsReady] = useState(false);
+  const { 
+    handleLogin, 
+    username, 
+    setUsername, 
+    password, 
+    setPassword, 
+    error, 
+    isLoggedIn, 
+    isReady 
+  } = useContext(SazerContext);
 
   return (
     <div>
       {isLoggedIn ? (
         isReady ? (
-          <main className="bg-[#0D1117] grid grid-cols-5 grid-rows-5 gap-10 pt-10">
-            <div className="row-span-5">
-              <SideBar />
-            </div>
-            <div className="col-span-2 row-span-5">
-              <MainSection />
-            </div>
-            <div className="col-span-2 row-span-3 col-start-4">
-              <NewsSection />
-            </div>
-            <div className="col-span-2 row-span-2 col-start-4 row-start-4">
-              <ChartSection />
-            </div>
-          </main>
+          <SazerMenu />
         ) : (
-          <div className='flex flex-col justify-center items-center text-white text-center'>
-            <h1 className='text-4xl mt-28 font-semibold text-[#E1E6EC]'>SA<span className='text-[#56A171]'>Z</span>ER</h1>
-            <h2 className='mt-5 text-3xl '>Type in the company you want to analyze</h2>
-            <form className='w-auto bg-[#0D1117] rounded-2xl px-16 mt-10'>
-              <div className='py-10 flex flex-col items-center justify-center gap-10'>
-                <input
-                  className='bg-[#282D34] rounded-md text-[#E1E6EC] py-2 px-12 text-center'
-                  placeholder='amazon inc.'
-                  type="text"
-                  // onChange={}
-                />
-              
-                <button onClick={() => setIsReady(true)} className='bg-[#2D684B] text-[#A0CFC6] py-2 px-8 rounded-md' type="submit">Analyze</button>
-              </div>
-            </form>
-            <span className='text-[#E1E6EC] mt-20'>Why this tool can help you with your financial decisions?</span>
-          </div>
+          <Analizer />
         )
       ) : (
         <div className='flex flex-col justify-center items-center text-white text-center'>
@@ -93,4 +58,3 @@ export default function Login () {
   );
 };
 
-   

@@ -1,4 +1,8 @@
+import { useContext } from "react";
+import { SazerContext } from "../context/AppContext";
+
 export default function SideBar () {
+  const {setIsLoggedIn} = useContext(SazerContext);
   return (
     <aside id="default-sidebar" className="fixed top-0 left-0 z-40 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0" aria-label="Sidebar">
       <div className="h-full px-6 py-8 overflow-y-auto bg-gray-50 dark:bg-[#010409]">
@@ -72,7 +76,7 @@ export default function SideBar () {
               <span className="flex-1 ms-3 whitespace-nowrap">Settings</span>
             </a>
           </li>
-          <li className="pt-[250px]">
+          <li onClick={()=> setIsLoggedIn(false)} className="pt-[250px]">
             <a href="#" className="flex transition-all items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
               <div className="p-2 bg-gray-800 rounded-md">
                 <svg className="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 16">
