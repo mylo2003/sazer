@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 import { SazerContext } from '../context/AppContext';
 import Analizer from './Analizer';
-import SazerMenu from './SazerMenu';
+import SazerMenu from '../components/SazerMenu';
 
 export default function Login() {
 

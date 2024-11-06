@@ -11,7 +11,6 @@ function SazerProvider({ children }) {
     return () => clearTimeout(timer);
   }, []);
 
-
   //Login 
 
   const [username, setUsername] = useState('');

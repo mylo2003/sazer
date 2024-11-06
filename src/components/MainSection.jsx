@@ -1,14 +1,13 @@
 import { useContext } from 'react';
 import { SazerContext } from '../context/AppContext';
 import Loader from './Loader';
-import LoaderTwo from './LoaderTwo';
 
 export default function MainSection() {
 
   const { isLoader } =  useContext(SazerContext);
 
   return (
-    <div className="bg-[#010409] text-[#E1E6EC] w-full h-[90%] rounded-xl px-8 pt-5 pb-28">
+    <div className="bg-[#010409] text-[#E1E6EC] w-full h-[90%] rounded-xl px-8 pt-8 pb-28">
       {
         isLoader ? (
           <div className="flex flex-row gap-2">
