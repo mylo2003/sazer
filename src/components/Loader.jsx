@@ -1,10 +1,10 @@
-export default function Loader () {
+export default function Loader() {
   return (
     <>
-      <div className="w-full gap-x-2 flex justify-center items-center">
-        <div className="w-5 h-5 bg-green-400 rounded-full animate-bounce"></div>
-        <div className="w-5 h-5 bg-green-300 rounded-full animate-bounce"></div>
-        <div className="w-5 h-5  bg-green-200 rounded-full animate-bounce"></div>
+      <div className="flex flex-row gap-2">
+        <div className="w-8 h-8 rounded-full bg-green-400  animate-bounce [animation-delay:.7s]"></div>
+        <div className="w-8 h-8 rounded-full bg-green-300 animate-bounce [animation-delay:.3s]"></div>
+        <div className="w-8 h-8 rounded-full bg-green-200 animate-bounce [animation-delay:.7s]"></div>
       </div>
     </>
   );

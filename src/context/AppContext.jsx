@@ -7,7 +7,7 @@ function SazerProvider({ children }) {
   const [isLoader, setIsLoader] = useState(true);
 
   useEffect(() => {
-    const timer = setTimeout(() => setIsLoader(false), 30000);
+    const timer = setTimeout(() => setIsLoader(false), 2000);
     return () => clearTimeout(timer);
   }, []);
 
@@ -30,6 +30,8 @@ function SazerProvider({ children }) {
 
   const [isReady, setIsReady] = useState(false);
 
+  const [selectedCompany, setSelectedCompany] = useState(""); // Estado para almacenar la selección de la empresa
+
   return (
     <SazerContext.Provider
       value={
@@ -46,7 +48,9 @@ function SazerProvider({ children }) {
           setIsReady,
           handleLogin,
           isLoader,
-          setIsLoader
+          setIsLoader,
+          selectedCompany,
+          setSelectedCompany,
         }
       }
     >

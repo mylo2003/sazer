@@ -4,8 +4,8 @@ import Login from "../pages/Login";
 export default function AppUI() {
   return (
     <>
-      {/* <Login /> */}
-      <SazerMenu />
+      <Login />
+      {/* <SazerMenu /> */}
     </>
   );
 }

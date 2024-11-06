@@ -1,10 +1,15 @@
 import { useContext } from 'react';
 import { SazerContext } from '../context/AppContext';
 import LoaderTwo from './LoaderTwo';
+import recentNews from '../api/recentNews.js'
+import info from '../api/info.js'
 
 export default function NewsSection() {
 
-  const { isLoader } = useContext(SazerContext);
+  const { isLoader, selectedCompany} = useContext(SazerContext);
+
+  const companyNews = recentNews[parseInt(selectedCompany)];
+  const companyInfo = info[parseInt(selectedCompany)];
 
   return (
     <>
@@ -12,28 +17,29 @@ export default function NewsSection() {
       <div className='h-2/4 text-[#E1E6EC] overflow-y-auto'>
         {isLoader ? (
           <div>
-            <LoaderTwo/>
-            <LoaderTwo/>
-            <LoaderTwo/>
+            <LoaderTwo />
+            <LoaderTwo />
+            <LoaderTwo />
           </div>
         ) : (
           <div>
             <div>
-              <p>
-                Recientes informes de analistas del sector tecnológico sugieren que Apple podría enfrentar obstáculos en su crecimiento a corto plazo...
-              </p>
-              <span className='text-[#5E86B9] inline-block mt-2'>Market feels reserved</span>
-            </div>
-            <div>
-              <p>
-                Analistas del sector tecnológico ven en Google un fuerte potencial de crecimiento, haciendo de este un buen momento para considerar una inversión en la compañía...
-              </p>
-              <span className='text-[#408D70] inline-block mt-2'>Market feels positive</span>
-            </div>
-            <div>
-              <p>
-                En medio de una creciente competencia en el mercado de vehículos eléctricos (VE) y desafíos en su cadena de suministro, Tesla se enfrenta a dificultades que han encendido las alarmas entre los analistas...</p>
-              <span className='text-[#A14C4C] inline-block mt-2'>Market feels angry</span>
+              {companyNews ? (
+                <ul className="space-y-4">
+                  {companyNews.news.map((newsItem) => (
+                    <li
+                      key={newsItem.id}
+                      className={`border w-[95%] ${companyInfo.recommendation == 0 ? 'border-blue-300' : companyInfo.recommendation > 0 ? 'border-green-300' : 'border-red-300' } rounded-lg shadow-md p-4 bg-gray-800 hover:shadow-lg transition-shadow`}
+                    >
+                      <h3 className="text-lg font-bold text-white">{newsItem.title}</h3>
+                      <p className="text-sm text-gray-400 mb-2">{newsItem.date}</p>
+                      <p className="text-gray-100">{newsItem.description}</p>
+                    </li>
+                  ))}
+                </ul>
+              ) : (
+                <p className="text-center text-gray-500">No hay noticias de {companyInfo.company} disponibles.</p>
+              )}
             </div>
           </div>
         )}
